@@ -49,6 +49,15 @@
         .recipe p {
             margin: 5px 0;
         }
+        .language-switcher {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        .language-switcher select {
+            font-size: 12px;
+            padding: 5px;
+        }
     </style>
 </head>
 <body>
@@ -59,14 +68,25 @@
 </header>
 
 <nav>
-    <a href="index_en.html">English</a>
-    <a href="index_fr.html">French</a>
-    <a href="index_es.html">Spanish</a>
-    <a href="index_it.html">Italian</a>
-    <a href="index_bn.html">Bengali</a>
-    <a href="index_hi.html">Hindi</a>
-    <a href="index_ar.html">Arabic</a>
+    <a href="index_en.html">Home</a>
+    <a href="index_en.html#cuisines">Cuisines</a>
+    <a href="index_en.html#dietary">Dietary Needs</a>
+    <a href="index_en.html#stories">Cultural Stories</a>
+    <a href="index_en.html#pairings">Food Pairings</a>
+    <a href="index_en.html#engagement">Community</a>
 </nav>
+
+<div class="language-switcher">
+    <select onchange="window.location.href=this.value;">
+        <option value="index_en.html" selected>English</option>
+        <option value="index_fr.html">Français</option>
+        <option value="index_es.html">Español</option>
+        <option value="index_it.html">Italiano</option>
+        <option value="index_bn.html">বাংলা</option>
+        <option value="index_hi.html">हिन्दी</option>
+        <option value="index_ar.html">العربية</option>
+    </select>
+</div>
 
 <div class="content">
     <section class="category" id="cuisines">
