@@ -1,167 +1,175 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cuisinopedia - Global Recipes</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f8f8f8;
-      color: #333;
-    }
-    header {
-      background: linear-gradient(135deg, #ff7e5f, #feb47b, #86A8E7, #7F7FD5);
-      color: white;
-      text-align: center;
-      padding: 40px 0;
-      font-size: 1.5em;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 20px;
-      background-color: #333;
-      position: sticky;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-    }
-    .navbar {
-      display: flex;
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-    }
-    .navbar li {
-      position: relative;
-    }
-    .navbar a {
-      display: block;
-      color: white;
-      text-decoration: none;
-      padding: 15px 20px;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-    .navbar a:hover {
-      background-color: #444;
-      color: #ff7e5f;
-    }
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: #333;
-      min-width: 200px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      z-index: 1000;
-    }
-    .dropdown-content a {
-      display: block;
-      color: white;
-      padding: 10px;
-      text-decoration: none;
-    }
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
-    .search-bar {
-      padding: 8px;
-      font-size: 14px;
-      border-radius: 5px;
-      border: none;
-    }
-    .dark-mode-toggle {
-      cursor: pointer;
-      padding: 10px;
-      color: white;
-    }
-    .content {
-      padding: 40px;
-      text-align: center;
-    }
-    .section {
-      display: none;
-      padding: 20px;
-    }
-    .active {
-      display: block;
-    }
-    footer {
-      background-color: #333;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      margin-top: 20px;
-    }
-  </style>
-  <script>
-    function showSection(sectionId) {
-      document.querySelectorAll('.section').forEach(section => {
-        section.classList.remove('active');
-      });
-      document.getElementById(sectionId).classList.add('active');
-    }
-    function toggleDarkMode() {
-      document.body.classList.toggle('dark-mode');
-    }
-  </script>
-</head>
-<body>
-  <header>
-    <h1>Cuisinopedia - Explore Global Flavors</h1>
-  </header>
-  <div class="nav-container">
-    <input type="text" class="search-bar" placeholder="Search recipes..." />
-    <ul class="navbar">
-      <li><a href="#" onclick="showSection('home')">Home</a></li>
-      <li class="dropdown">
-        <a href="#" class="dropbtn">Recipes</a>
-        <div class="dropdown-content">
-          <a href="#" onclick="showSection('dietary')">Select Dietary Preference</a>
-          <a href="#" onclick="showSection('italian')">Italian Cuisine</a>
-          <a href="#" onclick="showSection('french')">French Cuisine</a>
-          <a href="#" onclick="showSection('japanese')">Japanese Cuisine</a>
-          <a href="#" onclick="showSection('indian')">Indian Cuisine</a>
-          <a href="#" onclick="showSection('chinese')">Chinese Cuisine</a>
-        </div>
-      </li>
-      <li><a href="#" onclick="showSection('occasions')">Occasions</a></li>
-      <li><a href="#" onclick="showSection('plating')">Plating Tips</a></li>
-      <li><a href="#" onclick="showSection('community')">Community</a></li>
-    </ul>
-    <span class="dark-mode-toggle" onclick="toggleDarkMode()">🌙</span>
-  </div>
-  <div class="content">
-    <section id="home" class="section active">
-      <h2>Welcome to Cuisinopedia</h2>
-      <p>Explore the world of flavors with curated recipes and expert cooking tips.</p>
-      <h3>Our Goal</h3>
-      <p>We aim to bring together the most delicious recipes from around the world, cater to various dietary preferences, and help food enthusiasts discover new flavors while maintaining cultural authenticity.</p>
-    </section>
-    <section id="dietary" class="section">
-      <h2>Select Your Dietary Preference</h2>
-      <p>Choose from vegetarian, vegan, gluten-free, and more.</p>
-    </section>
-    <section id="italian" class="section">
-      <h2>Italian Cuisine</h2>
-      <p>Discover authentic Italian recipes.</p>
-    </section>
-    <section id="french" class="section">
-      <h2>French Cuisine</h2>
-      <p>Explore classic French dishes.</p>
-    </section>
-  </div>
-  <footer>
-    <p>&copy; 2025 Cuisinopedia | All Rights Reserved</p>
-  </footer>
-</body>
-</html>
+/* General Styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f8f8;
+  color: #333;
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+}
+
+/* Header and Hero Section */
+header {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.hero img {
+  width: 100%;
+  height: auto;
+}
+
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.hero-text h1 {
+  font-size: 3em;
+  margin: 0;
+}
+
+.hero-text p {
+  font-size: 1.2em;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #FF7F50;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+/* Navigation Bar */
+nav {
+  background-color: #333;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 10px 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar li {
+  position: relative;
+}
+
+.navbar a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 15px 20px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.navbar a:hover {
+  background-color: #444;
+  color: #FF7F50;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #333;
+  min-width: 200px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.dropdown-content a {
+  display: block;
+  color: white;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Recipe Grid */
+.recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.recipe-card {
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.recipe-card:hover {
+  transform: translateY(-10px);
+}
+
+.recipe-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.recipe-card h3 {
+  margin: 10px;
+}
+
+.recipe-card p {
+  margin: 10px;
+  color: #666;
+}
+
+.view-recipe {
+  display: block;
+  padding: 10px;
+  background-color: #FF7F50;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* Footer */
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.social-media a {
+  color: white;
+  margin: 0 10px;
+  font-size: 1.5em;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+  }
+  .recipe-grid {
+    grid-template-columns: 1fr;
+  }
+}
