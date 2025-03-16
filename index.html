@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cuisinopedia - Global Recipes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #f9f9f9;
             color: #333;
         }
         header, footer {
@@ -38,7 +39,7 @@
         .category h2 {
             background-color: #eee;
             padding: 10px;
-            margin: 0;
+            border-radius: 5px;
         }
         .recipe {
             margin: 10px 0;
@@ -73,7 +74,7 @@
             margin: 20px 0;
         }
         .top-dish {
-            width: 30%;
+            width: 45%;
             margin: 10px;
             text-align: center;
         }
@@ -81,6 +82,13 @@
             width: 100%;
             height: auto;
             border-radius: 10px;
+        }
+        .section-header {
+            background-color: #ff6347;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
         }
     </style>
 </head>
@@ -117,12 +125,12 @@
 
 <div class="content">
     <div class="world-map">
-        <h2>World Map</h2>
+        <h2 class="section-header">World Map of Popular Dishes</h2>
         <img src="images/world-map.jpg" alt="World Map" width="600">
     </div>
 
     <section class="category" id="cuisines">
-        <h2>Cuisines and Meal Types</h2>
+        <h2 class="section-header">Cuisines and Meal Types</h2>
         <div class="recipe">
             <h3>Indian</h3>
             <p>Explore traditional and modern Indian recipes.</p>
@@ -131,7 +139,7 @@
     </section>
 
     <section class="category" id="dietary">
-        <h2>Dietary Focus</h2>
+        <h2 class="section-header">Dietary Focus</h2>
         <div class="recipe">
             <h3>Vegetarian</h3>
             <p>Delicious vegetarian recipes for every meal.</p>
@@ -140,7 +148,7 @@
     </section>
 
     <section class="category" id="stories">
-        <h2>Cultural Meaning and Story Behind Dishes</h2>
+        <h2 class="section-header">Cultural Meaning and Story Behind Dishes</h2>
         <div class="recipe">
             <h3>Biryani</h3>
             <p>The origin of Biryani, its historical roots, and its significance in Indian culture.</p>
@@ -149,7 +157,7 @@
     </section>
 
     <section class="category" id="pairings">
-        <h2>Food Pairings and Meal Planning</h2>
+        <h2 class="section-header">Food Pairings and Meal Planning</h2>
         <div class="recipe">
             <h3>What to Serve with Curry</h3>
             <p>Rice, naan, or side dishes like raita or pickles.</p>
@@ -158,7 +166,7 @@
     </section>
 
     <section class="category" id="engagement">
-        <h2>User Engagement</h2>
+        <h2 class="section-header">User Engagement</h2>
         <div class="recipe">
             <h3>Recipe of the Week</h3>
             <p>Try out our featured recipe and share your results!</p>
@@ -167,7 +175,7 @@
     </section>
 
     <div class="top-dishes">
-        <h2>World's Top 5 Dishes</h2>
+        <h2 class="section-header">World's Top 5 Dishes</h2>
         <div class="top-dish">
             <img src="images/pizza.jpg" alt="Pizza">
             <p>Pizza - A popular Italian dish made with a flatbread crust, tomato sauce, cheese, and various toppings.</p>
