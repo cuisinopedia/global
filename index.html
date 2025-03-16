@@ -4,10 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cuisinopedia - Global Recipes</title>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
   <style>
     body {
       font-family: 'Poppins', sans-serif;
@@ -22,7 +19,6 @@
       text-align: center;
       padding: 40px 0;
       font-size: 1.5em;
-      position: relative;
     }
     .language-switcher {
       position: absolute;
@@ -35,7 +31,6 @@
       border: none;
       border-radius: 5px;
     }
-    /* Navigation styling */
     nav {
       background-color: #333;
       position: sticky;
@@ -50,9 +45,6 @@
       margin: 0;
       padding: 0;
     }
-    .navbar > li {
-      position: relative;
-    }
     .navbar a {
       display: block;
       color: white;
@@ -65,28 +57,6 @@
       background-color: #444;
       color: #ff7e5f;
     }
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: #444;
-      min-width: 200px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      z-index: 1;
-    }
-    .dropdown-content a {
-      padding: 12px 16px;
-      color: white;
-      text-decoration: none;
-      display: block;
-      text-align: left;
-    }
-    .dropdown-content a:hover {
-      background-color: #555;
-      color: #ff7e5f;
-    }
-    .navbar li.dropdown:hover .dropdown-content {
-      display: block;
-    }
     .content {
       padding: 40px;
       text-align: center;
@@ -96,7 +66,6 @@
       color: #ff7e5f;
       margin: 20px 0;
     }
-    /* Our Goal Section */
     #goal p {
       text-align: justify;
       max-width: 800px;
@@ -150,38 +119,21 @@
   <nav>
     <ul class="navbar">
       <li><a href="#home">Home</a></li>
-      <li><a href="#goal">Our Goal</a></li>
-      <li class="dropdown">
-        <a href="#recipes" class="dropbtn">Recipes</a>
-        <div class="dropdown-content">
-          <a href="#global">Global Recipes</a>
-          <a href="#quick">Quick Meals</a>
-          <a href="#planner">Meal Planner</a>
-        </div>
-      </li>
-      <li class="dropdown">
-        <a href="#occasions" class="dropbtn">Occasions</a>
-        <div class="dropdown-content">
-          <a href="#special">Cultural & Special Occasions</a>
-          <a href="#pairings">Food Pairings</a>
-          <a href="#newcuisine">New Cuisine Must-Trys</a>
-        </div>
-      </li>
+      <li><a href="#recipes">Recipes</a></li>
+      <li><a href="#occasions">Occasions</a></li>
       <li><a href="#plating">Plating Tips</a></li>
       <li><a href="#community">Community</a></li>
     </ul>
   </nav>
 
   <div class="content">
-    <!-- Our Goal Section -->
     <section id="goal">
       <h2 class="section-header">Our Goal</h2>
       <p>
-        At Cuisinopedia, our mission is to serve as your comprehensive guide to global cuisine—whether you’re a seasoned professional, an enthusiastic home cook, or someone pressed for time yet craving delicious, quick meal solutions. We aspire to inspire you with carefully curated recipes for breakfast, lunch, and dinner tailored to your food preferences. From must-try combinations and first-time explorations into new cuisines (like Italian) to expert recommendations for the perfect dinner date or culturally inspired wedding feasts, our platform helps you decide what to cook and how to present it with style. And for those creating dishes, we offer creative tips on plating and food decoration to elevate your culinary art.
+        At Cuisinopedia, our mission is to share global cooking recipes for everyone, from professional chefs to home cooks. We aim to help people with busy schedules prepare fast yet delicious meals. Our platform guides users on what to eat for breakfast, lunch, or dinner based on their food preferences and offers expert advice on food pairings. For those exploring new cuisines like Italian for the first time, we provide must-try recommendations. Additionally, we help plan meals for special occasions, whether it’s a romantic dinner date, a wedding menu tailored to cultural preferences, or a diverse feast combining multiple cuisines. To enhance the dining experience, we also provide food presentation and plating tips to make meals look as delightful as they taste.
       </p>
     </section>
 
-    <!-- Featured Recipe Section -->
     <h2 class="section-header">Featured Recipe</h2>
     <div class="recipe">
       <img src="images/biryani.jpg" alt="Biryani" />
