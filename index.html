@@ -17,21 +17,37 @@
       font-family: 'Poppins', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #F5F5DC; /* Soft beige background */
+      background-color: #f8f8f8;
       color: #333;
       line-height: 1.6;
     }
     h1, h2, h3 {
       font-family: 'Playfair Display', serif;
-      color: #2E8B57; /* Dark green for headings */
     }
-    /* Hero Section */
+    /* Header - Reverting to Previous Color Scheme */
     header {
       position: relative;
       overflow: hidden;
       height: 60vh;
+      /* Use original gradient colors */
+      background: linear-gradient(135deg, #ff7e5f, #feb47b, #86A8E7, #7F7FD5);
       color: white;
+      text-align: center;
+      padding: 40px 0;
     }
+    /* Optional Language Switcher */
+    .language-switcher {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+    .language-switcher select {
+      font-size: 14px;
+      padding: 5px;
+      border: none;
+      border-radius: 5px;
+    }
+    /* Hero Section with Image & Gradient Overlay */
     .hero {
       position: relative;
       width: 100%;
@@ -41,7 +57,8 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.8;
+      opacity: 0.9;
+      mix-blend-mode: multiply;
     }
     .hero-text {
       position: absolute;
@@ -60,7 +77,7 @@
       margin-bottom: 30px;
     }
     .cta-button {
-      background-color: #FF7F50; /* Deep orange for accents */
+      background-color: #ff7e5f; /* keeping original accent */
       color: #fff;
       padding: 12px 25px;
       text-decoration: none;
@@ -101,7 +118,7 @@
     }
     .navbar a:hover {
       background-color: #444;
-      color: #FF7F50;
+      color: #ff7e5f;
     }
     .navbar a i {
       margin-right: 8px;
@@ -133,15 +150,15 @@
     .search-bar input[type="text"] {
       width: 300px;
       padding: 10px;
-      border: 2px solid #FF7F50;
+      border: 2px solid #ff7e5f;
       border-radius: 5px 0 0 5px;
       outline: none;
     }
     .search-bar button {
       padding: 10px 15px;
-      border: 2px solid #FF7F50;
+      border: 2px solid #ff7e5f;
       border-left: none;
-      background-color: #FF7F50;
+      background-color: #ff7e5f;
       color: white;
       border-radius: 0 5px 5px 0;
       cursor: pointer;
@@ -192,7 +209,7 @@
     .recipe-card h3 {
       margin: 10px;
       font-size: 1.4em;
-      color: #2E8B57;
+      color: #333;
     }
     .recipe-card p {
       margin: 10px;
@@ -203,7 +220,7 @@
       display: inline-block;
       margin: 10px;
       padding: 8px 15px;
-      background-color: #FF7F50;
+      background-color: #ff7e5f;
       color: #fff;
       text-decoration: none;
       border-radius: 5px;
@@ -211,6 +228,20 @@
     }
     .view-recipe:hover {
       background-color: #e0673d;
+    }
+    /* New Feature Items with Classy Accents */
+    .feature-item {
+      background-color: #fff;
+      border: 2px solid #D4AF37; /* Gold accent */
+      border-radius: 5px;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 800px;
+      text-align: left;
+    }
+    .feature-item h3 {
+      margin-top: 0;
+      color: #333;
     }
     /* Footer */
     footer {
@@ -227,7 +258,7 @@
       transition: color 0.3s;
     }
     .social-media a:hover {
-      color: #FF7F50;
+      color: #ff7e5f;
     }
     .newsletter {
       margin-top: 20px;
@@ -241,7 +272,7 @@
     .newsletter button {
       padding: 10px 15px;
       border: none;
-      background-color: #FF7F50;
+      background-color: #ff7e5f;
       color: white;
       border-radius: 0 5px 5px 0;
       cursor: pointer;
@@ -270,8 +301,15 @@
   </script>
 </head>
 <body>
-  <!-- Hero Section -->
+  <!-- Header with Language Switcher -->
   <header>
+    <div class="language-switcher">
+      <select>
+        <option value="en">English</option>
+        <option value="es">Español</option>
+        <!-- Add more languages as needed -->
+      </select>
+    </div>
     <div class="hero">
       <img src="global-dish.jpg" alt="Global Cuisine" />
       <div class="hero-text">
@@ -281,7 +319,7 @@
       </div>
     </div>
   </header>
-  <!-- Navigation with Icons -->
+  <!-- Navigation with New "Features" Item -->
   <nav>
     <ul class="navbar">
       <li><a href="#" onclick="showSection('home')"><i class="fas fa-home"></i> Home</a></li>
@@ -299,6 +337,7 @@
       <li><a href="#" onclick="showSection('occasions')"><i class="fas fa-calendar-alt"></i> Occasions</a></li>
       <li><a href="#" onclick="showSection('plating')"><i class="fas fa-border-all"></i> Plating Tips</a></li>
       <li><a href="#" onclick="showSection('community')"><i class="fas fa-users"></i> Community</a></li>
+      <li><a href="#" onclick="showSection('features')"><i class="fas fa-cogs"></i> Features</a></li>
     </ul>
   </nav>
   <!-- Search Bar -->
@@ -314,7 +353,7 @@
       <p>Explore the world of flavors with curated recipes and expert cooking tips.</p>
       <h3>Our Goal</h3>
       <p>
-        We share global cooking recipes tailored for everyone—from culinary professionals to home cooks on the go. Whether you need a fast, delicious meal for a busy morning, inspiration for a hearty lunch or dinner, or expert advice on pairing flavors across cuisines, we’re here to help. Discover must-try combinations, navigate new culinary traditions (like exploring Italian classics for the first time), plan the perfect dinner date menu, or even curate culturally-inspired wedding and event menus. Plus, our plating tips ensure your food looks as stunning as it tastes.
+        We share global cooking recipes tailored for everyone—from culinary professionals to home cooks on the go. Whether you need a fast, delicious meal for a busy morning, inspiration for a hearty lunch or dinner, or expert advice on pairing flavors across cuisines, we’re here to help. Discover must-try combinations, navigate new culinary traditions, plan the perfect dinner date menu, or even curate culturally-inspired wedding and event menus. Plus, our plating tips ensure your food looks as stunning as it tastes.
       </p>
       <!-- Example Recipe Cards -->
       <div class="recipe-grid">
@@ -377,6 +416,76 @@
     <section id="community" class="section">
       <h2>Community</h2>
       <p>Connect with fellow food lovers, share your recipes, and join the conversation.</p>
+    </section>
+    <!-- New Features Section -->
+    <section id="features" class="section">
+      <h2>New Features</h2>
+      <!-- Interactive Recipe Filters -->
+      <div class="feature-item">
+        <h3>Interactive Recipe Filters</h3>
+        <p>Filter recipes based on dietary preferences, cuisine type, cooking time, and difficulty level.</p>
+        <p><strong>Example Implementation:</strong> Use dropdown menus or checkboxes with JavaScript to dynamically display recipes based on user selections.</p>
+      </div>
+      <!-- Meal Planner Tool -->
+      <div class="feature-item">
+        <h3>Meal Planner Tool</h3>
+        <p>Plan your weekly meals, select recipes for each day, generate a shopping list, and get nutritional information.</p>
+        <p><strong>Example Implementation:</strong> Drag-and-drop interface with integration to APIs like Spoonacular for nutritional data.</p>
+      </div>
+      <!-- AI-Powered Recipe Recommendations -->
+      <div class="feature-item">
+        <h3>AI-Powered Recipe Recommendations</h3>
+        <p>Receive personalized recipe suggestions based on your preferences, available ingredients, and seasonal produce.</p>
+        <p><strong>Example Implementation:</strong> Integrate AI APIs (such as OpenAI or Spoonacular) and a "What’s in Your Fridge?" feature.</p>
+      </div>
+      <!-- Augmented Reality (AR) Plating Guide -->
+      <div class="feature-item">
+        <h3>Augmented Reality (AR) Plating Guide</h3>
+        <p>Use your phone camera to get overlayed plating suggestions, helping you plate like a professional chef.</p>
+        <p><strong>Example Implementation:</strong> Leverage AR libraries like AR.js or platforms like Google ARCore.</p>
+      </div>
+      <!-- Voice-Activated Cooking Assistant -->
+      <div class="feature-item">
+        <h3>Voice-Activated Cooking Assistant</h3>
+        <p>Have recipe steps read aloud, set timers, and convert measurements hands-free.</p>
+        <p><strong>Example Implementation:</strong> Utilize the Web Speech API and integrate with assistants like Alexa or Google Assistant.</p>
+      </div>
+      <!-- Seasonal and Trending Recipes -->
+      <div class="feature-item">
+        <h3>Seasonal and Trending Recipes</h3>
+        <p>Discover recipes that are in season or trending based on searches and social media.</p>
+        <p><strong>Example Implementation:</strong> Fetch trending recipes via APIs (e.g., Spoonacular) and create a dedicated section.</p>
+      </div>
+      <!-- Food Pairing Guide -->
+      <div class="feature-item">
+        <h3>Food Pairing Guide</h3>
+        <p>Get recommendations on pairing your dishes with wines, beers, side dishes, or desserts.</p>
+        <p><strong>Example Implementation:</strong> Integrate food pairing APIs to build a visual guide with images and descriptions.</p>
+      </div>
+      <!-- Multilingual Support -->
+      <div class="feature-item">
+        <h3>Multilingual Support</h3>
+        <p>Access recipes in multiple languages and easily switch between them.</p>
+        <p><strong>Example Implementation:</strong> Use translation APIs (like Google Translate) and store translations in JSON files.</p>
+      </div>
+      <!-- Food Blog -->
+      <div class="feature-item">
+        <h3>Food Blog</h3>
+        <p>Read articles on food trends, chef interviews, and tips for hosting memorable events.</p>
+        <p><strong>Example Implementation:</strong> Integrate a CMS or a commenting system like Disqus.</p>
+      </div>
+      <!-- Sustainability Tips -->
+      <div class="feature-item">
+        <h3>Sustainability Tips</h3>
+        <p>Learn how to reduce food waste and adopt eco-friendly kitchen practices.</p>
+        <p><strong>Example Implementation:</strong> Create a dedicated section with infographics and videos on sustainability.</p>
+      </div>
+      <!-- Virtual Food Tours -->
+      <div class="feature-item">
+        <h3>Virtual Food Tours</h3>
+        <p>Take interactive, 360° tours of famous food markets, restaurants, and street food stalls around the world.</p>
+        <p><strong>Example Implementation:</strong> Use 360-degree videos or Google Street View with clickable hotspots.</p>
+      </div>
     </section>
   </div>
   <!-- Footer with Social Media & Newsletter -->
