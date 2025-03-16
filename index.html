@@ -37,13 +37,18 @@
       top: 0;
       width: 100%;
       z-index: 1000;
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
     }
     .navbar {
       display: flex;
-      justify-content: center;
       list-style-type: none;
       margin: 0;
       padding: 0;
+    }
+    .navbar li {
+      position: relative;
     }
     .navbar a {
       display: block;
@@ -57,109 +62,109 @@
       background-color: #444;
       color: #ff7e5f;
     }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #333;
+      min-width: 200px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+    .dropdown-content a {
+      display: block;
+      color: white;
+      padding: 10px;
+      text-decoration: none;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
     .content {
       padding: 40px;
       text-align: center;
     }
-    .section-header {
-      font-size: 2em;
-      color: #ff7e5f;
-      margin: 20px 0;
-    }
-    #goal p {
-      text-align: justify;
-      max-width: 800px;
-      margin: auto;
-      line-height: 1.6;
-    }
-    .recipe {
-      background: white;
-      border-radius: 15px;
+    .section {
+      display: none;
       padding: 20px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      margin: 20px auto;
-      width: 80%;
-      transition: transform 0.3s;
     }
-    .recipe:hover {
-      transform: translateY(-5px);
-    }
-    .recipe img {
-      width: 100%;
-      border-radius: 10px;
-    }
-    footer {
-      background-color: #333;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
+    .active {
+      display: block;
     }
   </style>
+  <script>
+    function showSection(sectionId) {
+      document.querySelectorAll('.section').forEach(section => {
+        section.classList.remove('active');
+      });
+      document.getElementById(sectionId).classList.add('active');
+    }
+  </script>
 </head>
 <body>
   <header>
     <h1>Cuisinopedia - Explore Global Flavors</h1>
-    <div class="language-switcher">
-      <select onchange="window.location.href=this.value;">
-        <option value="index_en.html" selected>English</option>
-        <option value="index_fr.html">Français</option>
-        <option value="index_es.html">Español</option>
-        <option value="index_it.html">Italiano</option>
-        <option value="index_bn.html">বাংলা</option>
-        <option value="index_hi.html">हिन्दी</option>
-        <option value="index_ar.html">العربية</option>
-        <option value="index_zh.html">中文</option>
-        <option value="index_ko.html">한국어</option>
-        <option value="index_ru.html">Русский</option>
-      </select>
-    </div>
   </header>
-
   <nav>
     <ul class="navbar">
-      <li><a href="#home">Home</a></li>
+      <li><a href="#" onclick="showSection('home')">Home</a></li>
       <li class="dropdown">
-        <a href="#recipes" class="dropbtn">Recipes</a>
+        <a href="#" class="dropbtn">Recipes</a>
         <div class="dropdown-content">
-          <a href="#dietary">Select Dietary Preference</a>
-          <a href="#italian">Italian Cuisine</a>
-          <a href="#french">French Cuisine</a>
-          <a href="#japanese">Japanese Cuisine</a>
-          <a href="#indian">Indian Cuisine</a>
-          <a href="#chinese">Chinese Cuisine</a>
-          <a href="#mexican">Mexican Cuisine</a>
-          <a href="#thai">Thai Cuisine</a>
-          <a href="#spanish">Spanish Cuisine</a>
-          <a href="#greek">Greek Cuisine</a>
-          <a href="#korean">Korean Cuisine</a>
-          <a href="#vietnamese">Vietnamese Cuisine</a>
-          <a href="#turkish">Turkish Cuisine</a>
-          <a href="#brazilian">Brazilian Cuisine</a>
-          <a href="#german">German Cuisine</a>
-          <a href="#lebanese">Lebanese Cuisine</a>
-          <a href="#british">British Cuisine</a>
-          <a href="#russian">Russian Cuisine</a>
-          <a href="#american">American Cuisine</a>
-          <a href="#moroccan">Moroccan Cuisine</a>
-          <a href="#indonesian">Indonesian Cuisine</a>
+          <a href="#" onclick="showSection('dietary')">Select Dietary Preference</a>
+          <a href="#" onclick="showSection('italian')">Italian Cuisine</a>
+          <a href="#" onclick="showSection('french')">French Cuisine</a>
+          <a href="#" onclick="showSection('japanese')">Japanese Cuisine</a>
+          <a href="#" onclick="showSection('indian')">Indian Cuisine</a>
+          <a href="#" onclick="showSection('chinese')">Chinese Cuisine</a>
         </div>
       </li>
-      <li><a href="#occasions">Occasions</a></li>
-      <li><a href="#plating">Plating Tips</a></li>
-      <li><a href="#community">Community</a></li>
+      <li><a href="#" onclick="showSection('occasions')">Occasions</a></li>
+      <li><a href="#" onclick="showSection('plating')">Plating Tips</a></li>
+      <li><a href="#" onclick="showSection('community')">Community</a></li>
     </ul>
   </nav>
-
   <div class="content">
-    <section id="goal">
-      <h2 class="section-header">Our Goal</h2>
-      <p>
-        At Cuisinopedia, our mission is to share global cooking recipes for everyone, from professional chefs to home cooks. We aim to help people with busy schedules prepare fast yet delicious meals. Our platform guides users on what to eat for breakfast, lunch, or dinner based on their food preferences and offers expert advice on food pairings. For those exploring new cuisines like Italian for the first time, we provide must-try recommendations. Additionally, we help plan meals for special occasions, whether it’s a romantic dinner date, a wedding menu tailored to cultural preferences, or a diverse feast combining multiple cuisines. To enhance the dining experience, we also provide food presentation and plating tips to make meals look as delightful as they taste.
-      </p>
+    <section id="home" class="section active">
+      <h2>Welcome to Cuisinopedia</h2>
+      <p>Explore the world of flavors with curated recipes and expert cooking tips.</p>
+    </section>
+    <section id="dietary" class="section">
+      <h2>Select Your Dietary Preference</h2>
+      <p>Choose from vegetarian, vegan, gluten-free, and more.</p>
+    </section>
+    <section id="italian" class="section">
+      <h2>Italian Cuisine</h2>
+      <p>Discover authentic Italian recipes.</p>
+    </section>
+    <section id="french" class="section">
+      <h2>French Cuisine</h2>
+      <p>Explore classic French dishes.</p>
+    </section>
+    <section id="japanese" class="section">
+      <h2>Japanese Cuisine</h2>
+      <p>Experience the flavors of Japan.</p>
+    </section>
+    <section id="indian" class="section">
+      <h2>Indian Cuisine</h2>
+      <p>Delight in traditional Indian meals.</p>
+    </section>
+    <section id="chinese" class="section">
+      <h2>Chinese Cuisine</h2>
+      <p>Enjoy authentic Chinese flavors.</p>
+    </section>
+    <section id="occasions" class="section">
+      <h2>Occasions</h2>
+      <p>Plan meals for special events.</p>
+    </section>
+    <section id="plating" class="section">
+      <h2>Plating Tips</h2>
+      <p>Enhance the presentation of your dishes.</p>
+    </section>
+    <section id="community" class="section">
+      <h2>Community</h2>
+      <p>Connect with fellow food lovers.</p>
     </section>
   </div>
-
   <footer>
     <p>&copy; 2025 Cuisinopedia | All Rights Reserved</p>
   </footer>
