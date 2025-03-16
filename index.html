@@ -24,18 +24,16 @@
     h1, h2, h3 {
       font-family: 'Playfair Display', serif;
     }
-    /* Header - Reverting to Previous Color Scheme */
+    /* Header - Using Original Gradient Colors */
     header {
       position: relative;
       overflow: hidden;
       height: 60vh;
-      /* Use original gradient colors */
       background: linear-gradient(135deg, #ff7e5f, #feb47b, #86A8E7, #7F7FD5);
       color: white;
       text-align: center;
       padding: 40px 0;
     }
-    /* Optional Language Switcher */
     .language-switcher {
       position: absolute;
       top: 10px;
@@ -47,7 +45,7 @@
       border: none;
       border-radius: 5px;
     }
-    /* Hero Section with Image & Gradient Overlay */
+    /* Hero Section with Image */
     .hero {
       position: relative;
       width: 100%;
@@ -77,7 +75,7 @@
       margin-bottom: 30px;
     }
     .cta-button {
-      background-color: #ff7e5f; /* keeping original accent */
+      background-color: #ff7e5f;
       color: #fff;
       padding: 12px 25px;
       text-decoration: none;
@@ -184,7 +182,7 @@
       from { opacity: 0; }
       to { opacity: 1; }
     }
-    /* Recipe Grid & Cards */
+    /* Recipe Grid & Cards (used in Home & demos) */
     .recipe-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -197,6 +195,7 @@
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       overflow: hidden;
       transition: transform 0.3s;
+      cursor: pointer;
     }
     .recipe-card:hover {
       transform: scale(1.02);
@@ -229,19 +228,73 @@
     .view-recipe:hover {
       background-color: #e0673d;
     }
-    /* New Feature Items with Classy Accents */
-    .feature-item {
+    /* Feature Section – Classy Interactive Implementations */
+    #features .feature-item {
       background-color: #fff;
       border: 2px solid #D4AF37; /* Gold accent */
       border-radius: 5px;
       padding: 20px;
       margin: 20px auto;
-      max-width: 800px;
+      max-width: 900px;
       text-align: left;
     }
-    .feature-item h3 {
+    /* Modals for AR and Food Pairing */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background: rgba(0,0,0,0.6);
+    }
+    .modal-content {
+      background-color: #fff;
+      margin: 10% auto;
+      padding: 20px;
+      border-radius: 5px;
+      max-width: 500px;
+      position: relative;
+    }
+    .close {
+      color: #aaa;
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    /* Meal Planner Styles */
+    #mealPlanner {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 20px;
+      border: 2px dashed #ccc;
+      padding: 20px;
+      border-radius: 5px;
+    }
+    .day {
+      width: 12%;
+      min-height: 150px;
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 5px;
+      background: #fdfdfd;
+    }
+    .day h4 {
       margin-top: 0;
-      color: #333;
+      text-align: center;
+    }
+    .draggable {
+      padding: 5px;
+      background: #ff7e5f;
+      color: #fff;
+      margin: 5px 0;
+      border-radius: 3px;
+      cursor: grab;
     }
     /* Footer */
     footer {
@@ -289,22 +342,22 @@
       .search-bar input[type="text"] {
         width: 70%;
       }
+      #mealPlanner {
+        flex-direction: column;
+        align-items: center;
+      }
+      .day {
+        width: 80%;
+        margin-bottom: 15px;
+      }
     }
   </style>
-  <script>
-    function showSection(sectionId) {
-      document.querySelectorAll('.section').forEach(section => {
-        section.classList.remove('active');
-      });
-      document.getElementById(sectionId).classList.add('active');
-    }
-  </script>
 </head>
 <body>
   <!-- Header with Language Switcher -->
   <header>
     <div class="language-switcher">
-      <select>
+      <select id="langSelect">
         <option value="en">English</option>
         <option value="es">Español</option>
         <!-- Add more languages as needed -->
@@ -313,13 +366,13 @@
     <div class="hero">
       <img src="global-dish.jpg" alt="Global Cuisine" />
       <div class="hero-text">
-        <h1>Discover the World on Your Plate</h1>
-        <p>Explore authentic recipes, plating tips, and event planning for every occasion.</p>
+        <h1 data-lang-key="heroTitle">Discover the World on Your Plate</h1>
+        <p data-lang-key="heroText">Explore authentic recipes, plating tips, and event planning for every occasion.</p>
         <a href="#home" class="cta-button">Explore Recipes</a>
       </div>
     </div>
   </header>
-  <!-- Navigation with New "Features" Item -->
+  <!-- Navigation -->
   <nav>
     <ul class="navbar">
       <li><a href="#" onclick="showSection('home')"><i class="fas fa-home"></i> Home</a></li>
@@ -347,7 +400,7 @@
   </div>
   <!-- Main Content Sections -->
   <div class="content">
-    <!-- Home Section with Updated Goal -->
+    <!-- Home Section -->
     <section id="home" class="section active">
       <h2>Welcome to Cuisinopedia</h2>
       <p>Explore the world of flavors with curated recipes and expert cooking tips.</p>
@@ -357,19 +410,18 @@
       </p>
       <!-- Example Recipe Cards -->
       <div class="recipe-grid">
-        <div class="recipe-card">
+        <div class="recipe-card" data-diet="nonveg" data-cuisine="italian" data-time="medium" data-difficulty="intermediate">
           <img src="pasta.jpg" alt="Spaghetti Carbonara" />
           <h3>Spaghetti Carbonara</h3>
           <p>Classic Italian pasta with a creamy twist.</p>
-          <a href="#" class="view-recipe">View Recipe</a>
+          <a href="#" class="view-recipe" onclick="showPairing('Spaghetti Carbonara')">Show Pairings</a>
         </div>
-        <div class="recipe-card">
+        <div class="recipe-card" data-diet="veg" data-cuisine="japanese" data-time="quick" data-difficulty="beginner">
           <img src="sushi.jpg" alt="Sushi Platter" />
           <h3>Sushi Platter</h3>
           <p>Authentic Japanese sushi with fresh ingredients.</p>
-          <a href="#" class="view-recipe">View Recipe</a>
+          <a href="#" class="view-recipe" onclick="showPairing('Sushi Platter')">Show Pairings</a>
         </div>
-        <!-- Add more recipe cards as needed -->
       </div>
     </section>
     <!-- Dietary Preferences Section -->
@@ -417,74 +469,114 @@
       <h2>Community</h2>
       <p>Connect with fellow food lovers, share your recipes, and join the conversation.</p>
     </section>
-    <!-- New Features Section -->
+    <!-- Features Section – Interactive Implementations -->
     <section id="features" class="section">
-      <h2>New Features</h2>
-      <!-- Interactive Recipe Filters -->
+      <h2>Interactive Features</h2>
+      <!-- 1. Interactive Recipe Filters -->
       <div class="feature-item">
         <h3>Interactive Recipe Filters</h3>
-        <p>Filter recipes based on dietary preferences, cuisine type, cooking time, and difficulty level.</p>
-        <p><strong>Example Implementation:</strong> Use dropdown menus or checkboxes with JavaScript to dynamically display recipes based on user selections.</p>
+        <p>Filter recipes by dietary type and cuisine:</p>
+        <div>
+          <label><input type="checkbox" class="filter-checkbox" value="veg" /> Vegetarian</label>
+          <label><input type="checkbox" class="filter-checkbox" value="nonveg" /> Non-Vegetarian</label>
+          <label><input type="checkbox" class="filter-checkbox" value="glutenfree" /> Gluten-Free</label>
+        </div>
+        <div>
+          <select id="cuisineSelect">
+            <option value="">All Cuisines</option>
+            <option value="italian">Italian</option>
+            <option value="japanese">Japanese</option>
+            <!-- Add more as needed -->
+          </select>
+          <button onclick="applyFilters()">Apply Filters</button>
+        </div>
+        <div class="recipe-grid" id="filterGrid">
+          <!-- Dummy recipe cards with data attributes -->
+          <div class="recipe-card" data-diet="veg" data-cuisine="italian">
+            <img src="pasta.jpg" alt="Veg Pasta" />
+            <h3>Veg Pasta</h3>
+            <p>Delicious vegetarian pasta.</p>
+          </div>
+          <div class="recipe-card" data-diet="nonveg" data-cuisine="japanese">
+            <img src="sushi.jpg" alt="Sushi" />
+            <h3>Sushi</h3>
+            <p>Fresh Japanese sushi.</p>
+          </div>
+        </div>
       </div>
-      <!-- Meal Planner Tool -->
+      <!-- 2. Meal Planner Tool -->
       <div class="feature-item">
         <h3>Meal Planner Tool</h3>
-        <p>Plan your weekly meals, select recipes for each day, generate a shopping list, and get nutritional information.</p>
-        <p><strong>Example Implementation:</strong> Drag-and-drop interface with integration to APIs like Spoonacular for nutritional data.</p>
+        <p>Drag a recipe into a day to plan your meals.</p>
+        <div>
+          <div class="draggable" draggable="true" id="dragRecipe1">Spaghetti Carbonara</div>
+          <div class="draggable" draggable="true" id="dragRecipe2">Sushi Platter</div>
+        </div>
+        <div id="mealPlanner">
+          <div class="day" ondragover="allowDrop(event)" ondrop="drop(event)" data-day="Monday"><h4>Mon</h4></div>
+          <div class="day" ondragover="allowDrop(event)" ondrop="drop(event)" data-day="Tuesday"><h4>Tue</h4></div>
+          <div class="day" ondragover="allowDrop(event)" ondrop="drop(event)" data-day="Wed"><h4>Wed</h4></div>
+          <div class="day" ondragover="allowDrop(event)" ondrop="drop(event)" data-day="Thu"><h4>Thu</h4></div>
+          <div class="day" ondragover="allowDrop(event)" ondrop="drop(event)" data-day="Fri"><h4>Fri</h4></div>
+          <div class="day" ondragover="allowDrop(event)" ondrop="drop(event)" data-day="Sat"><h4>Sat</h4></div>
+          <div class="day" ondragover="allowDrop(event)" ondrop="drop(event)" data-day="Sun"><h4>Sun</h4></div>
+        </div>
       </div>
-      <!-- AI-Powered Recipe Recommendations -->
+      <!-- 3. AI-Powered Recipe Recommendations -->
       <div class="feature-item">
         <h3>AI-Powered Recipe Recommendations</h3>
-        <p>Receive personalized recipe suggestions based on your preferences, available ingredients, and seasonal produce.</p>
-        <p><strong>Example Implementation:</strong> Integrate AI APIs (such as OpenAI or Spoonacular) and a "What’s in Your Fridge?" feature.</p>
+        <p>Enter ingredients (comma separated) and get a recommendation:</p>
+        <input type="text" id="ingredientsInput" placeholder="e.g., tomato, basil, garlic" />
+        <button onclick="getAIRecommendation()">Get Recommendation</button>
+        <p id="aiOutput"></p>
       </div>
-      <!-- Augmented Reality (AR) Plating Guide -->
+      <!-- 4. Augmented Reality (AR) Plating Guide -->
       <div class="feature-item">
         <h3>Augmented Reality (AR) Plating Guide</h3>
-        <p>Use your phone camera to get overlayed plating suggestions, helping you plate like a professional chef.</p>
-        <p><strong>Example Implementation:</strong> Leverage AR libraries like AR.js or platforms like Google ARCore.</p>
+        <button onclick="openModal('arModal')">Launch AR Plating Guide</button>
       </div>
-      <!-- Voice-Activated Cooking Assistant -->
+      <!-- 5. Voice-Activated Cooking Assistant -->
       <div class="feature-item">
         <h3>Voice-Activated Cooking Assistant</h3>
-        <p>Have recipe steps read aloud, set timers, and convert measurements hands-free.</p>
-        <p><strong>Example Implementation:</strong> Utilize the Web Speech API and integrate with assistants like Alexa or Google Assistant.</p>
+        <button onclick="startVoiceAssistant()">Start Voice Assistant</button>
+        <p id="voiceOutput">Voice output will appear here...</p>
       </div>
-      <!-- Seasonal and Trending Recipes -->
+      <!-- 6. Seasonal and Trending Recipes -->
       <div class="feature-item">
         <h3>Seasonal and Trending Recipes</h3>
-        <p>Discover recipes that are in season or trending based on searches and social media.</p>
-        <p><strong>Example Implementation:</strong> Fetch trending recipes via APIs (e.g., Spoonacular) and create a dedicated section.</p>
+        <button onclick="showSeasonal()">Show Seasonal Recipes</button>
+        <div class="recipe-grid" id="seasonalGrid" style="display:none;">
+          <div class="recipe-card" data-season="true">
+            <img src="pumpkin.jpg" alt="Pumpkin Dish" />
+            <h3>Pumpkin Soup</h3>
+            <p>Perfect for fall.</p>
+          </div>
+        </div>
       </div>
-      <!-- Food Pairing Guide -->
+      <!-- 7. Food Pairing Guide -->
       <div class="feature-item">
         <h3>Food Pairing Guide</h3>
-        <p>Get recommendations on pairing your dishes with wines, beers, side dishes, or desserts.</p>
-        <p><strong>Example Implementation:</strong> Integrate food pairing APIs to build a visual guide with images and descriptions.</p>
+        <p>Click “Show Pairings” on a recipe card to see suggestions.</p>
       </div>
-      <!-- Multilingual Support -->
-      <div class="feature-item">
-        <h3>Multilingual Support</h3>
-        <p>Access recipes in multiple languages and easily switch between them.</p>
-        <p><strong>Example Implementation:</strong> Use translation APIs (like Google Translate) and store translations in JSON files.</p>
-      </div>
-      <!-- Food Blog -->
+      <!-- 8. Multilingual Support is handled by the language switcher above -->
+      <!-- 9. Food Blog -->
       <div class="feature-item">
         <h3>Food Blog</h3>
-        <p>Read articles on food trends, chef interviews, and tips for hosting memorable events.</p>
-        <p><strong>Example Implementation:</strong> Integrate a CMS or a commenting system like Disqus.</p>
+        <div id="foodBlog"></div>
       </div>
-      <!-- Sustainability Tips -->
+      <!-- 10. Sustainability Tips -->
       <div class="feature-item">
         <h3>Sustainability Tips</h3>
-        <p>Learn how to reduce food waste and adopt eco-friendly kitchen practices.</p>
-        <p><strong>Example Implementation:</strong> Create a dedicated section with infographics and videos on sustainability.</p>
+        <button onclick="toggleSustainability()">Toggle Sustainability Tips</button>
+        <div id="sustainability" style="display:none;">
+          <p>Learn how to reduce food waste, cook with sustainable ingredients, and adopt eco-friendly kitchen practices.</p>
+        </div>
       </div>
-      <!-- Virtual Food Tours -->
+      <!-- 11. Virtual Food Tours -->
       <div class="feature-item">
         <h3>Virtual Food Tours</h3>
-        <p>Take interactive, 360° tours of famous food markets, restaurants, and street food stalls around the world.</p>
-        <p><strong>Example Implementation:</strong> Use 360-degree videos or Google Street View with clickable hotspots.</p>
+        <p>Take a virtual tour of a famous food market:</p>
+        <iframe width="100%" height="300" src="https://www.google.com/maps/embed?pb=!4v1618322168907!6m8!1m7!1sCAoSLEFGMVFpcE1xTnVWRk9VZDF6OEZ6T0VRbGczSkhTUGI3a2JYWVpMN1hzV1pf!2m2!1d35.665722!2d139.770833!3f0!4f0!5f0.7820865974627469" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
       </div>
     </section>
   </div>
@@ -502,5 +594,167 @@
     </div>
     <p>&copy; 2025 Cuisinopedia | All Rights Reserved</p>
   </footer>
+
+  <!-- AR Modal -->
+  <div id="arModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('arModal')">&times;</span>
+      <h3>AR Plating Guide</h3>
+      <p>AR Plating Guide Coming Soon!</p>
+    </div>
+  </div>
+  <!-- Food Pairing Modal -->
+  <div id="pairingModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('pairingModal')">&times;</span>
+      <h3>Food Pairing Suggestions</h3>
+      <p id="pairingContent">Pair this dish with a complementary wine or side dish.</p>
+    </div>
+  </div>
+
+  <script>
+    // Section toggler
+    function showSection(sectionId) {
+      document.querySelectorAll('.section').forEach(section => {
+        section.classList.remove('active');
+      });
+      document.getElementById(sectionId).classList.add('active');
+    }
+    // ---------------------
+    // Interactive Recipe Filters
+    function applyFilters() {
+      const checkboxes = document.querySelectorAll('.filter-checkbox');
+      const selectedDiets = Array.from(checkboxes)
+        .filter(cb => cb.checked)
+        .map(cb => cb.value);
+      const selectedCuisine = document.getElementById('cuisineSelect').value;
+      document.querySelectorAll('#filterGrid .recipe-card').forEach(card => {
+        const diet = card.getAttribute('data-diet');
+        const cuisine = card.getAttribute('data-cuisine');
+        let show = true;
+        if (selectedDiets.length && !selectedDiets.includes(diet)) {
+          show = false;
+        }
+        if (selectedCuisine && cuisine !== selectedCuisine) {
+          show = false;
+        }
+        card.style.display = show ? 'block' : 'none';
+      });
+    }
+    // ---------------------
+    // Meal Planner Drag and Drop
+    document.querySelectorAll('.draggable').forEach(item => {
+      item.addEventListener('dragstart', function (e) {
+        e.dataTransfer.setData('text/plain', e.target.id);
+      });
+    });
+    function allowDrop(ev) {
+      ev.preventDefault();
+    }
+    function drop(ev) {
+      ev.preventDefault();
+      const data = ev.dataTransfer.getData('text/plain');
+      const draggedEl = document.getElementById(data);
+      // Append a clone to avoid removing from original list
+      ev.target.closest('.day').appendChild(draggedEl.cloneNode(true));
+    }
+    // ---------------------
+    // AI-Powered Recipe Recommendations
+    function getAIRecommendation() {
+      const input = document.getElementById('ingredientsInput').value;
+      const recipes = [
+        'Tomato Basil Pasta',
+        'Garlic Shrimp',
+        'Vegan Salad Bowl',
+        'Spicy Curry'
+      ];
+      // Simple simulation: choose a random recipe
+      const rec = recipes[Math.floor(Math.random() * recipes.length)];
+      document.getElementById('aiOutput').innerText = `Based on [${input}], try: ${rec}`;
+    }
+    // ---------------------
+    // Modal controls
+    function openModal(modalId) {
+      document.getElementById(modalId).style.display = 'block';
+    }
+    function closeModal(modalId) {
+      document.getElementById(modalId).style.display = 'none';
+    }
+    // ---------------------
+    // Voice-Activated Cooking Assistant
+    function startVoiceAssistant() {
+      const output = document.getElementById('voiceOutput');
+      if (!('webkitSpeechRecognition' in window)) {
+        output.innerText = "Voice recognition not supported in this browser.";
+        return;
+      }
+      const recognition = new webkitSpeechRecognition();
+      recognition.lang = 'en-US';
+      recognition.start();
+      recognition.onresult = function(event) {
+        output.innerText = 'You said: ' + event.results[0][0].transcript;
+      };
+      recognition.onerror = function(event) {
+        output.innerText = 'Error occurred in recognition: ' + event.error;
+      };
+    }
+    // ---------------------
+    // Seasonal and Trending Recipes Toggle
+    function showSeasonal() {
+      const seasonalGrid = document.getElementById('seasonalGrid');
+      seasonalGrid.style.display = seasonalGrid.style.display === 'none' ? 'grid' : 'none';
+    }
+    // ---------------------
+    // Food Pairing Guide: Show modal with pairing suggestions
+    function showPairing(recipeName) {
+      document.getElementById('pairingContent').innerText = 
+        `For ${recipeName}, we suggest pairing with a light white wine or a crisp salad.`;
+      openModal('pairingModal');
+    }
+    // ---------------------
+    // Food Blog: Load dummy posts
+    function loadFoodBlog() {
+      const blogPosts = [
+        { title: 'Top 10 Italian Dishes to Try', content: 'Explore the richness of Italian cuisine...' },
+        { title: 'Sustainable Cooking Tips', content: 'Learn how to reduce food waste and cook sustainably...' }
+      ];
+      const blogContainer = document.getElementById('foodBlog');
+      blogPosts.forEach(post => {
+        const postDiv = document.createElement('div');
+        postDiv.style.borderBottom = '1px solid #ddd';
+        postDiv.style.marginBottom = '10px';
+        postDiv.innerHTML = `<h4>${post.title}</h4><p>${post.content}</p>`;
+        blogContainer.appendChild(postDiv);
+      });
+    }
+    // ---------------------
+    // Sustainability Tips Toggle
+    function toggleSustainability() {
+      const sust = document.getElementById('sustainability');
+      sust.style.display = sust.style.display === 'none' ? 'block' : 'none';
+    }
+    // ---------------------
+    // Multilingual Support: Simple demo changing header text
+    document.getElementById('langSelect').addEventListener('change', function() {
+      const lang = this.value;
+      const translations = {
+        en: {
+          heroTitle: "Discover the World on Your Plate",
+          heroText: "Explore authentic recipes, plating tips, and event planning for every occasion."
+        },
+        es: {
+          heroTitle: "Descubre el Mundo en tu Plato",
+          heroText: "Explora recetas auténticas, consejos de emplatado y planificación de eventos para cada ocasión."
+        }
+      };
+      document.querySelector('[data-lang-key="heroTitle"]').innerText = translations[lang].heroTitle;
+      document.querySelector('[data-lang-key="heroText"]').innerText = translations[lang].heroText;
+    });
+    // ---------------------
+    // On page load, load food blog posts
+    window.onload = function() {
+      loadFoodBlog();
+    };
+  </script>
 </body>
 </html>
