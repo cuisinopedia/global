@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cuisinopedia - Global Recipes</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <style>
     body {
       font-family: 'Poppins', sans-serif;
@@ -19,27 +20,20 @@
       text-align: center;
       padding: 40px 0;
       font-size: 1.5em;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
-    .language-switcher {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-    }
-    .language-switcher select {
-      font-size: 14px;
-      padding: 5px;
-      border: none;
-      border-radius: 5px;
-    }
-    nav {
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
       background-color: #333;
       position: sticky;
       top: 0;
       width: 100%;
       z-index: 1000;
-      display: flex;
-      justify-content: center;
-      padding: 10px 0;
     }
     .navbar {
       display: flex;
@@ -79,6 +73,17 @@
     .dropdown:hover .dropdown-content {
       display: block;
     }
+    .search-bar {
+      padding: 8px;
+      font-size: 14px;
+      border-radius: 5px;
+      border: none;
+    }
+    .dark-mode-toggle {
+      cursor: pointer;
+      padding: 10px;
+      color: white;
+    }
     .content {
       padding: 40px;
       text-align: center;
@@ -90,6 +95,13 @@
     .active {
       display: block;
     }
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 20px;
+    }
   </style>
   <script>
     function showSection(sectionId) {
@@ -98,13 +110,17 @@
       });
       document.getElementById(sectionId).classList.add('active');
     }
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+    }
   </script>
 </head>
 <body>
   <header>
     <h1>Cuisinopedia - Explore Global Flavors</h1>
   </header>
-  <nav>
+  <div class="nav-container">
+    <input type="text" class="search-bar" placeholder="Search recipes..." />
     <ul class="navbar">
       <li><a href="#" onclick="showSection('home')">Home</a></li>
       <li class="dropdown">
@@ -122,7 +138,8 @@
       <li><a href="#" onclick="showSection('plating')">Plating Tips</a></li>
       <li><a href="#" onclick="showSection('community')">Community</a></li>
     </ul>
-  </nav>
+    <span class="dark-mode-toggle" onclick="toggleDarkMode()">🌙</span>
+  </div>
   <div class="content">
     <section id="home" class="section active">
       <h2>Welcome to Cuisinopedia</h2>
@@ -141,30 +158,6 @@
     <section id="french" class="section">
       <h2>French Cuisine</h2>
       <p>Explore classic French dishes.</p>
-    </section>
-    <section id="japanese" class="section">
-      <h2>Japanese Cuisine</h2>
-      <p>Experience the flavors of Japan.</p>
-    </section>
-    <section id="indian" class="section">
-      <h2>Indian Cuisine</h2>
-      <p>Delight in traditional Indian meals.</p>
-    </section>
-    <section id="chinese" class="section">
-      <h2>Chinese Cuisine</h2>
-      <p>Enjoy authentic Chinese flavors.</p>
-    </section>
-    <section id="occasions" class="section">
-      <h2>Occasions</h2>
-      <p>Plan meals for special events.</p>
-    </section>
-    <section id="plating" class="section">
-      <h2>Plating Tips</h2>
-      <p>Enhance the presentation of your dishes.</p>
-    </section>
-    <section id="community" class="section">
-      <h2>Community</h2>
-      <p>Connect with fellow food lovers.</p>
     </section>
   </div>
   <footer>
