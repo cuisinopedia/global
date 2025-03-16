@@ -1,142 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cuisinopedia - Global Recipes</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f8f8f8;
-            color: #333;
-        }
-        header {
-            background: linear-gradient(135deg, #ff7e5f, #feb47b);
-            color: white;
-            text-align: center;
-            padding: 40px 0;
-            font-size: 1.5em;
-            position: relative;
-        }
-        .language-switcher {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-        }
-        .language-switcher select {
-            font-size: 14px;
-            padding: 5px;
-            border: none;
-            border-radius: 5px;
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-            background-color: #333;
-            padding: 15px;
-            position: sticky;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 20px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-        nav a:hover {
-            color: #ff7e5f;
-        }
-        .content {
-            padding: 40px;
-            text-align: center;
-        }
-        .section-header {
-            font-size: 2em;
-            color: #ff7e5f;
-            margin: 20px 0;
-        }
-        #goal p {
-            text-align: justify;
-            max-width: 800px;
-            margin: auto;
-            line-height: 1.6;
-        }
-        .recipe {
-            background: white;
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin: 20px auto;
-            width: 80%;
-            transition: transform 0.3s;
-        }
-        .recipe:hover {
-            transform: translateY(-5px);
-        }
-        .recipe img {
-            width: 100%;
-            border-radius: 10px;
-        }
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cuisinopedia - Global Recipes</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f8f8;
+      color: #333;
+    }
+    header {
+      background: linear-gradient(135deg, #ff7e5f, #feb47b);
+      color: white;
+      text-align: center;
+      padding: 40px 0;
+      font-size: 1.5em;
+      position: relative;
+    }
+    .language-switcher {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+    .language-switcher select {
+      font-size: 14px;
+      padding: 5px;
+      border: none;
+      border-radius: 5px;
+    }
+    /* Navigation styling */
+    nav {
+      background-color: #333;
+      position: sticky;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    /* Navbar container */
+    .navbar {
+      display: flex;
+      justify-content: center;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+    .navbar > li {
+      position: relative;
+    }
+    .navbar a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      padding: 15px 20px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .navbar a:hover {
+      background-color: #444;
+      color: #ff7e5f;
+    }
+    /* Dropdown container */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #444;
+      min-width: 200px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      z-index: 1;
+    }
+    .dropdown-content a {
+      padding: 12px 16px;
+      color: white;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+    }
+    .dropdown-content a:hover {
+      background-color: #555;
+      color: #ff7e5f;
+    }
+    /* Show dropdown on hover */
+    .navbar li.dropdown:hover .dropdown-content {
+      display: block;
+    }
+    .content {
+      padding: 40px;
+      text-align: center;
+    }
+    .section-header {
+      font-size: 2em;
+      color: #ff7e5f;
+      margin: 20px 0;
+    }
+    /* Our Goal section */
+    #goal p {
+      text-align: justify;
+      max-width: 800px;
+      margin: auto;
+      line-height: 1.6;
+    }
+    .recipe {
+      background: white;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin: 20px auto;
+      width: 80%;
+      transition: transform 0.3s;
+    }
+    .recipe:hover {
+      transform: translateY(-5px);
+    }
+    .recipe img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Cuisinopedia - Explore Global Flavors</h1>
-        <div class="language-switcher">
-            <select onchange="window.location.href=this.value;">
-                <option value="index_en.html" selected>English</option>
-                <option value="index_fr.html">Français</option>
-                <option value="index_es.html">Español</option>
-                <option value="index_it.html">Italiano</option>
-                <option value="index_bn.html">বাংলা</option>
-                <option value="index_hi.html">हिन्दी</option>
-                <option value="index_ar.html">العربية</option>
-                <option value="index_zh.html">中文</option>
-                <option value="index_ko.html">한국어</option>
-                <option value="index_ru.html">Русский</option>
-            </select>
-        </div>
-    </header>
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#cuisines">Cuisines</a>
-        <a href="#dietary">Dietary Needs</a>
-        <a href="#stories">Stories</a>
-        <a href="#pairings">Pairings</a>
-        <a href="#community">Community</a>
-    </nav>
-    <div class="content">
-        <!-- Our Goal Section -->
-        <section id="goal">
-            <h2 class="section-header">Our Goal</h2>
-            <p>
-                At Cuisinopedia, our mission is to serve as your comprehensive guide to global cuisine—whether you're a seasoned professional, an enthusiastic home cook, or someone pressed for time but craving delicious, quick meal solutions. We aspire to inspire you with carefully curated recipes for breakfast, lunch, and dinner that suit your unique tastes and dietary needs. From must-try combinations and first-time explorations into new cuisines like Italian, to expert recommendations for a perfect dinner date or culturally inspired wedding feasts, our platform aims to help you decide what to cook and how to present it with style. We also offer creative tips for plating and food decoration, ensuring every meal is a celebration of taste and aesthetics.
-            </p>
-        </section>
-        
-        <!-- Featured Recipe Section -->
-        <h2 class="section-header">Featured Recipe</h2>
-        <div class="recipe">
-            <img src="images/biryani.jpg" alt="Biryani">
-            <h3>Biryani - A Fragrant Delight</h3>
-            <p>Learn the art of making authentic biryani, a flavorful rice dish enjoyed across cultures.</p>
-        </div>
+  <header>
+    <h1>Cuisinopedia - Explore Global Flavors</h1>
+    <div class="language-switcher">
+      <select onchange="window.location.href=this.value;">
+        <option value="index_en.html" selected>English</option>
+        <option value="index_fr.html">Français</option>
+        <option value="index_es.html">Español</option>
+        <option value="index_it.html">Italiano</option>
+        <option value="index_bn.html">বাংলা</option>
+        <option value="index_hi.html">हिन्दी</option>
+        <option value="index_ar.html">العربية</option>
+        <option value="index_zh.html">中文</option>
+        <option value="index_ko.html">한국어</option>
+        <option value="index_ru.html">Русский</option>
+      </select>
     </div>
-    <footer>
-        <p>&copy; 2025 Cuisinopedia | All Rights Reserved</p>
-    </footer>
-</body>
-</html>
+  </header>
+
+  <nav>
+    <ul class="navbar">
+      <li><a href="#home">Home</a></li>
+      <li class="dropdown">
+        <a href="#recipes" class="dropbtn">Recipes</a>
+        <div class="dropdown-content">
+          <a href="#global">Global Recipes</a>
+          <a href="#quick">Quick Meals</a>
+          <a href="#planner">Meal Planner</a>
+        </div>
+      </li>
+      <li class="dropdown">
+        <a href="#occasions" class="dropbtn">Occasions</a>
+        <div class="dropdown-content">
+          <a href="#special">Cultural & Special Occasions</a>
+          <a href="#pairings">Food Pairings</a>
+          <a href="#newcuisine">New Cuisine 
