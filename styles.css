@@ -173,3 +173,39 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+.section {
+    padding: 20px;
+}
+
+.recipe {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.recipe-text {
+    width: 60%;
+}
+
+.recipe-img {
+    width: 30%;
+}
+
+.recipe-img img {
+    width: 100%;
+    height: auto;
+}
+
+.recipe-btn {
+    padding: 10px 20px;
+    background-color: #ff5722;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.recipe-btn:hover {
+    background-color: #f44336;
+}
