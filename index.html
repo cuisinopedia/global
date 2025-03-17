@@ -445,12 +445,7 @@
       <p>Experience the delicate flavors and artistry of Japanese cooking.</p>
     </section>
     <!-- Indian Cuisine Section -->
- <section id="indian" class="section">
-    <h2>Indian Cuisine</h2>
-    <p>Delight in traditional Indian meals and vibrant food combinations.</p>
-
-    <!-- Recipe 1: Biryani -->
-    <section id="indian" class="section">
+<section id="indian" class="section">
     <h2>Indian Cuisine</h2>
     <p>Delight in traditional Indian meals and vibrant food combinations.</p>
 
@@ -493,7 +488,41 @@
         <button class="close-btn" onclick="toggleRecipe('biryani-recipe')">Close</button>
     </div>
 
-    <!-- Repeat the same for other dishes -->
+    <!-- Recipe 2: Butter Chicken -->
+    <div class="recipe">
+        <div class="recipe-text">
+            <h3>Butter Chicken (Murgh Makhani)</h3>
+            <p><strong>Cultural Story:</strong> Butter Chicken was invented in Delhi in the 1950s by the chefs at Moti Mahal restaurant. It has become one of the most beloved dishes of North Indian cuisine and a global favorite.</p>
+            <p><strong>History & Daily Consumption:</strong> Butter chicken is a staple in North Indian households and can be found in almost every Indian restaurant worldwide. It's often eaten daily or on special occasions.</p>
+            <button class="recipe-btn" onclick="toggleRecipe('butter-chicken-recipe')">Recipe</button>
+        </div>
+        <div class="recipe-img">
+            <img src="images/butter-chicken.jpg" alt="Butter Chicken">
+        </div>
+    </div>
+
+    <!-- Hidden Recipe Section -->
+    <div id="butter-chicken-recipe" class="recipe-details">
+        <h3>Full Butter Chicken Recipe</h3>
+        <p><strong>Serves:</strong> 4 people</p>
+        <p><strong>Ingredients:</strong></p>
+        <ul>
+            <li>500g boneless chicken</li>
+            <li>2 tbsp butter</li>
+            <li>1 cup tomato puree</li>
+            <li>½ cup fresh cream</li>
+            <li>1 tsp garam masala</li>
+            <li>Salt to taste</li>
+        </ul>
+        <p><strong>Instructions:</strong></p>
+        <ol>
+            <li>Cook chicken in butter until golden brown.</li>
+            <li>Add tomato puree, spices, and cook for 10 minutes.</li>
+            <li>Stir in fresh cream, simmer for 5 minutes.</li>
+            <li>Serve hot with naan or rice!</li>
+        </ol>
+        <button class="close-btn" onclick="toggleRecipe('butter-chicken-recipe')">Close</button>
+    </div>
 </section>
 
 <script>
@@ -508,27 +537,31 @@
 </script>
 
 <style>
+    .section {
+        padding: 20px;
+    }
+
     .recipe {
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin-bottom: 30px;
     }
-    
+
     .recipe-text {
         width: 60%;
     }
-    
+
     .recipe-img {
         width: 30%;
     }
-    
+
     .recipe-img img {
         width: 100%;
         height: auto;
         border-radius: 10px;
     }
-    
+
     .recipe-btn {
         padding: 10px 20px;
         background-color: #ff5722;
@@ -537,7 +570,7 @@
         cursor: pointer;
         margin-top: 10px;
     }
-    
+
     .recipe-btn:hover {
         background-color: #f44336;
     }
@@ -563,30 +596,6 @@
         background-color: #000;
     }
 </style>
-
-    <!-- Recipe 2: Butter Chicken -->
-    <div class="recipe">
-        <div class="recipe-text">
-            <h3>Butter Chicken (Murgh Makhani)</h3>
-            <p><strong>Cultural Story:</strong> Butter Chicken was invented in Delhi in the 1950s by the chefs at Moti Mahal restaurant. It has become one of the most beloved dishes of North Indian cuisine and a global favorite.</p>
-            <p><strong>History & Daily Consumption:</strong> Butter chicken is a staple in North Indian households and can be found in almost every Indian restaurant worldwide. It's often eaten daily or on special occasions.</p>
-            <button class="recipe-btn" onclick="window.location.href='#butter-chicken-recipe'">Recipe</button>
-        </div>
-        <div class="recipe-img">
-            <img src="images/butter-chicken.jpg" alt="Butter Chicken" />
-        </div>
-    </div>
-
-    <!-- You can continue adding more recipes like this -->
-</section>
-
-<!-- Recipe Modal or Expandable Section (Hidden by default) -->
-<section id="biryani-recipe" style="display: none;">
-    <h3>Full Biryani Recipe</h3>
-    <p><strong>Ingredients:</strong> 1 lb chicken, 2 cups basmati rice, 1 onion, 2 tomatoes, yogurt, ghee, etc...</p>
-    <p><strong>Directions:</strong> Step-by-step process for cooking Biryani...</p>
-    <button onclick="document.getElementById('biryani-recipe').style.display='none'">Close</button>
-</section>
 
 <!-- Repeat the modal for other recipes -->
 
