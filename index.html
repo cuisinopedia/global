@@ -362,7 +362,44 @@
         <option value="es">Español</option>
         <!-- Add more languages as needed -->
       </select>
-      </select>
+    
+    </div>
+    <div class="hero">
+      <img src="global-dish.jpg" alt="Global Cuisine" />
+      <div class="hero-text">
+        <h1 data-lang-key="heroTitle">Discover the World on Your Plate</h1>
+        <p data-lang-key="heroText">Explore authentic recipes, plating tips, and event planning for every occasion.</p>
+        <a href="#home" class="cta-button">Explore Recipes</a>
+      </div>
+    </div>
+  </header>
+  <!-- Navigation -->
+  <nav>
+    <ul class="navbar">
+      <li><a href="#" onclick="showSection('home')"><i class="fas fa-home"></i> Home</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropbtn"><i class="fas fa-utensils"></i> Recipes</a>
+        <div class="dropdown-content">
+          <a href="#" onclick="showSection('dietary')"><i class="fas fa-leaf"></i> Dietary</a>
+          <a href="#" onclick="showSection('italian')"><i class="fas fa-pizza-slice"></i> Italian</a>
+          <a href="#" onclick="showSection('french')"><i class="fas fa-bread-slice"></i> French</a>
+          <a href="#" onclick="showSection('japanese')"><i class="fas fa-fish"></i> Japanese</a>
+          <a href="#" onclick="showSection('indian')"><i class="fas fa-pepper-hot"></i> Indian</a>
+          <a href="#" onclick="showSection('chinese')"><i class="fas fa-drumstick-bite"></i> Chinese</a>
+        </div>
+      </li>
+      <li><a href="#" onclick="showSection('occasions')"><i class="fas fa-calendar-alt"></i> Occasions</a></li>
+      <li><a href="#" onclick="showSection('plating')"><i class="fas fa-border-all"></i> Plating Tips</a></li>
+      <li><a href="#" onclick="showSection('community')"><i class="fas fa-users"></i> Community</a></li>
+      <li><a href="#" onclick="showSection('features')"><i class="fas fa-cogs"></i> Features</a></li>
+  </ul>
+</nav>
+  <!-- Search Bar -->
+  <div class="search-bar">
+    <input type="text" placeholder="Search recipes..." />
+    <button><i class="fas fa-search"></i></button>
+  </div>
+  </select>
       <!-- Add the country selection dropdown here -->
       <select id="countrySelect" onchange="showCountrySection()">
         <option value="">Choose Country</option>
@@ -562,48 +599,7 @@
         <option value="zambia">Zambia</option>
         <option value="zimbabwe">Zimbabwe</option>
       </select>
-    </div>
-    <div class="hero">
-      <img src="global-dish.jpg" alt="Global Cuisine" />
-      <div class="hero-text">
-        <h1 data-lang-key="heroTitle">Discover the World on Your Plate</h1>
-        <p data-lang-key="heroText">Explore authentic recipes, plating tips, and event planning for every occasion.</p>
-        <a href="#home" class="cta-button">Explore Recipes</a>
-      </div>
-    </div>
-  </header>
-  <!-- Navigation -->
-  <nav>
-    <ul class="navbar">
-      <li><a href="#" onclick="showSection('home')"><i class="fas fa-home"></i> Home</a></li>
-      <li class="dropdown">
-        <a href="#" class="dropbtn"><i class="fas fa-utensils"></i> Recipes</a>
-        <div class="dropdown-content">
-          <a href="#" onclick="showSection('dietary')"><i class="fas fa-leaf"></i> Dietary</a>
-          <a href="#" onclick="showSection('italian')"><i class="fas fa-pizza-slice"></i> Italian</a>
-          <a href="#" onclick="showSection('french')"><i class="fas fa-bread-slice"></i> French</a>
-          <a href="#" onclick="showSection('japanese')"><i class="fas fa-fish"></i> Japanese</a>
-          <a href="#" onclick="showSection('indian')"><i class="fas fa-pepper-hot"></i> Indian</a>
-          <a href="#" onclick="showSection('chinese')"><i class="fas fa-drumstick-bite"></i> Chinese</a>
-        </div>
-      </li>
-      <li><a href="#" onclick="showSection('occasions')"><i class="fas fa-calendar-alt"></i> Occasions</a></li>
-      <li><a href="#" onclick="showSection('plating')"><i class="fas fa-border-all"></i> Plating Tips</a></li>
-      <li><a href="#" onclick="showSection('community')"><i class="fas fa-users"></i> Community</a></li>
-      <li><a href="#" onclick="showSection('features')"><i class="fas fa-cogs"></i> Features</a></li>
-   
-    <li><a href="#" onclick="showSection('home')"><i class="fas fa-home"></i> Home</a></li>
-    <li><a href="#" onclick="showSection('occasions')"><i class="fas fa-calendar-alt"></i> Occasions</a></li>
-    <li><a href="#" onclick="showSection('plating')"><i class="fas fa-border-all"></i> Plating Tips</a></li>
-    <li><a href="#" onclick="showSection('community')"><i class="fas fa-users"></i> Community</a></li>
-    <li><a href="#" onclick="showSection('features')"><i class="fas fa-cogs"></i> Features</a></li>
-  </ul>
-</nav>
-  <!-- Search Bar -->
-  <div class="search-bar">
-    <input type="text" placeholder="Search recipes..." />
-    <button><i class="fas fa-search"></i></button>
-  </div>
+  
   <!-- Main Content Sections -->
   <div class="content">
     <!-- Home Section -->
