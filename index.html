@@ -1830,6 +1830,25 @@
     };
     
   </script>
+<script>
+  function showCountrySection() {
+    const select = document.getElementById('countrySelect');
+    const selectedCountry = select.value;
+    const sections = document.querySelectorAll('.section');
+
+    sections.forEach(section => {
+      section.style.display = 'none';
+    });
+
+    if (selectedCountry) {
+      const activeSection = document.getElementById(selectedCountry);
+      if (activeSection) {
+        activeSection.style.display = 'block';
+      }
+    }
+  }
+</script>
+  
   <!-- Add these just before closing </head> -->
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet"></script>
