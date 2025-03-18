@@ -1495,37 +1495,6 @@
     window.onload = function() {
       loadFoodBlog();
     };
-
-
-<script>
-  function showCountrySection() {
-    const select = document.getElementById('countrySelect');
-    const selectedCountry = select.value;
-    const sections = document.querySelectorAll('.section');
-
-    sections.forEach(section => {
-      section.classList.remove('active');
-    });
-
-    if (selectedCountry) {
-      const activeSection = document.getElementById(selectedCountry);
-      if (activeSection) {
-        activeSection.classList.add('active');
-      }
-    }
-  }
-
-  function showSection(sectionId) {
-    const sections = document.querySelectorAll('.section');
-    sections.forEach(section => {
-      section.classList.remove('active');
-    });
-    const activeSection = document.getElementById(sectionId);
-    if (activeSection) {
-      activeSection.classList.add('active');
-    }
-  }
-</script>
     
   </script>
   <!-- Add these just before closing </head> -->
